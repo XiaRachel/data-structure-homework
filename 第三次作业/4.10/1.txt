@@ -1,0 +1,8 @@
+D:单位为数量一;
+E:单位为bit;
+P:单位为bit;
+n:单位为数量一;
+
+n > DE/(P+E);
+bit/(bit+bit) = none;
+

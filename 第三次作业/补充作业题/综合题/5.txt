@@ -1,0 +1,2 @@
+(1)不能。如果要d最先出栈，那么需要全部压栈，全部压栈后的序列肯定为dcba;
+(2)push push push pop pop push pop pop;
