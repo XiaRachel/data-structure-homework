@@ -1,0 +1,70 @@
+template <typename E>
+class AStack<E>
+{
+private:
+    int maxSize;
+    int top;
+    int end;
+    E *listArray;
+public:
+    static enum STACKTYPE{FIRST,SECOND;};
+    AStack(int size = 1000)
+    {
+        maxSize = size;
+        top = 0;
+        end = size-1;
+        listArray = new E[size];
+    }
+    ~AStack()
+    {
+        delete [] listArray;
+    }
+    void push(const E &it, STACKTYPE stacktype)
+    {
+        if(top == end)
+            throw runtime_error("stack is full");
+        if(stacktype == FIRST)
+        {
+            listArray[top++] = it;
+        }
+        else if(stacktype == SECOND)
+        {
+            listArray[end--] = it;
+        }
+    }
+    E pop(STACKTYPE stacktype)
+    {
+        if(stacktype == FIRST)
+        {
+            if(top == 0)
+                throw runtime_error("stack is empty");
+            return listArray[--top];
+        }
+        else if(stacktype == SECOND)
+        {
+            if(end == maxSize - 1)
+                throw runtime_error("stack is empty");
+            return listArray[++end];
+        }
+    }
+    const E& topValue(STACKTYPE stacktype) const
+    {
+                if(stacktype == FIRST)
+        {
+            if(top == 0)
+                throw runtime_error("stack is empty");
+            return listArray[top - 1];
+        }
+        else if(stacktype == SECOND)
+        {
+            if(end == maxSize - 1)
+                throw runtime_error("stack is empty");
+            return listArray[end  + 1];
+        }
+    }
+    int length(STACKTYPE stacktype) const
+    {
+        if(stacktype == FIRST) return top;
+        else if(stacktype == SECOND) return maxSize-1-end;
+    }
+};
